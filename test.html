@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Test Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        #quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .question {
+            margin-bottom: 10px;
+        }
+
+        .options label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div id="quiz-container">
+    <div class="question" id="question1">
+        <p>1. What is the capital of France?</p>
+        <div class="options">
+            <label><input type="radio" name="q1" value="paris"> Paris</label>
+            <label><input type="radio" name="q1" value="berlin"> Berlin</label>
+            <label><input type="radio" name="q1" value="london"> London</label>
+        </div>
+    </div>
+
+    <div class="question" id="question2">
+        <p>2. Which planet is known as the Red Planet?</p>
+        <div class="options">
+            <label><input type="radio" name="q2" value="earth"> Earth</label>
+            <label><input type="radio" name="q2" value="mars"> Mars</label>
+            <label><input type="radio" name="q2" value="venus"> Venus</label>
+        </div>
+    </div>
+
+    <button onclick="calculateScore()">Submit Answers</button>
+    <div id="result"></div>
+</div>
+
+<script>
+    function calculateScore() {
+        var score = 0;
+
+        // Question 1
+        var q1Answer = document.querySelector('input[name="q1"]:checked');
+        if (q1Answer && q1Answer.value === "paris") {
+            score += 1;
+        }
+
+        // Question 2
+        var q2Answer = document.querySelector('input[name="q2"]:checked');
+        if (q2Answer && q2Answer.value === "mars") {
+            score += 1;
+        }
+
+        // Display result
+        var resultContainer = document.getElementById('result');
+        resultContainer.textContent = 'Your score: ' + score + '/2';
+    }
+</script>
+
+</body>
+</html>
